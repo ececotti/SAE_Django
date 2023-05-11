@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        {% block title%}
+        <title> Bibliotheque locale</title>
+        {% endblock %} 
+        <meta charset="utf-8">
+        <meta name=""vieuwport"
+        content=""width="device-width,
+        initiale-scale=1">
+
+        {% load static %}
+        <link rel="stylesheet" href=" {% static 'css/test.css' %} ">
+
+    </head>
+    <body>
+        <h1>R&T Dev</h1> 
+
+    {% block menu %} 
+        <h2>Menu</h2>
+        <ul id="menu">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'machines' %}">Machines</a></li>
+            <li><a href="{% url 'personnels' %}">Personnels</a></li>
+            <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+            <li><a href="{% url 'add-personnel' %}">Ajouter un personnel</a></li>
+        </ul>
+    {% endblock %} 
+
+    <img src="{% static 'computerApp/image/logo.png' %}"
+    alt="logo" style="width:200px;height:200px;">
+
+    {% block content %} 
+        Blabla de la premiere page
+    {% endblock %}
+    </body>
+</html>
