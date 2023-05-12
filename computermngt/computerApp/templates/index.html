@@ -2,36 +2,57 @@
 <html lang='fr'>
     <head>
         {% block title%}
-        <title> Bibliotheque locale</title>
+        <title> R&T DEVLOPMENT</title>
         {% endblock %} 
-        <meta charset="utf-8">
-        <meta name=""vieuwport"
-        content=""width="device-width,
-        initiale-scale=1">
 
+        <meta charset="utf-8">
+        <meta name="vieuwport" content=""width="device-width, initiale-scale=1">
+
+        <!-- On ajoute un fichier css depuis les statics-->
         {% load static %}
         <link rel="stylesheet" href=" {% static 'css/test.css' %} ">
 
     </head>
+
     <body>
-        <h1>R&T Dev</h1> 
 
     {% block menu %} 
+        <div class="topnav">
+            <div class="link">
+                <a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Connexion</a>
+                <a href="{% url 'index' %}">Acceuil</a>
+                <a href="{% url 'machines' %}">Machines</a>
+                <a href="{% url 'personnels' %}">Personnels</a>
+                <a href="{% url 'add-machine' %}">Ajouter une machine</a>
+                <a href="{% url 'add-personnel' %}">Ajouter un personnel</a>
+            </div>    
+            <div class="logo">
+                <img src="{% static 'computerApp/image/logo.png' %} ">
+            </div>
+        </div>
+        
+        <h1>R&T Dev</h1> 
+
         <h2>Menu</h2>
-        <ul id="menu">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'machines' %}">Machines</a></li>
-            <li><a href="{% url 'personnels' %}">Personnels</a></li>
-            <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
-            <li><a href="{% url 'add-personnel' %}">Ajouter un personnel</a></li>
-        </ul>
+
+        <div style="padding-left:16px">
+            <h2>Exemple</h2>
+        </div>
+    
     {% endblock %} 
 
-    <img src="{% static 'computerApp/image/logo.png' %}"
-    alt="logo" style="width:200px;height:200px;">
-
     {% block content %} 
-        Blabla de la premiere page
+    <section>
+        <article>
+            <p classe="title"> Bienvenue sur le site web R&T devlopment.</p>
+        </article>
+    </section>
+
     {% endblock %}
+    
+    <footer>
+        <p>Website made by Me | All right reserved | Version 0.0.3 2022-2023</p>
+    </footer>
+
     </body>
 </html>
