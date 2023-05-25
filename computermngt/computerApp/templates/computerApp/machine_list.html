@@ -5,6 +5,7 @@
     <h1>liste des machines</h1>
         {% if machines %}
         <ul>
+            <a href="{% url 'add-machine' %}">Ajouter une machine</a>
             {% for machine in machines %}
                 <li>
                     <a href="{% url 'machine-detail' machine.id %}">

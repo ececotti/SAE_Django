@@ -4,6 +4,7 @@
     <h1>liste du personnel</h1>
         {% if personnels %}
         <ul>
+            <a href="{% url 'add-personnel' %}">Ajouter un personnel</a>
             {% for personnel in personnels %}
                 <li>
                     <a href="{% url 'personnel-detail' personnel.id %}">{{ personnel.id }}</a> ({{personnel.nom}})

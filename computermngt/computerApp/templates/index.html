@@ -20,11 +20,9 @@
         <div class="topnav">
             <div class="link">
                 <a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Connexion</a>
-                <a href="{% url 'index' %}">Acceuil</a>
+                <a href="{% url 'index' %}">Accueille</a>
                 <a href="{% url 'machines' %}">Machines</a>
                 <a href="{% url 'personnels' %}">Personnels</a>
-                <a href="{% url 'add-machine' %}">Ajouter une machine</a>
-                <a href="{% url 'add-personnel' %}">Ajouter un personnel</a>
             </div>    
             <div class="logo">
                 <img src="{% static 'computerApp/image/logo.png' %} ">
@@ -35,18 +33,21 @@
 
         <h2>Menu</h2>
 
-        <div style="padding-left:16px">
-            <h2>Exemple</h2>
+        <div style="text-align: center">
+            <h2>Bienvenue sur le site R&T</h2>
         </div>
+
     
     {% endblock %} 
 
     {% block content %} 
-    <section>
-        <article>
-            <p classe="title"> Bienvenue sur le site web R&T devlopment.</p>
-        </article>
-    </section>
+    <div class="fenetre_liste">
+        <div class="titre_fenetre">
+            <h2>Liste des machines et personnels assiciés</h2>
+        </div>
+    </div>
+    
+
 
     {% endblock %}
     

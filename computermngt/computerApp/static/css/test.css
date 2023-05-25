@@ -12,7 +12,7 @@ body {
     float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 33px 38px;
     text-decoration: none;
     font-size: 35px;;
   }
@@ -52,4 +52,16 @@ body {
     text-align: center;
     margin-top: 240px;
     width: 100%;
+  }
+
+  .titre_fenetre{
+    text-align: center;
+  }
+  
+  .fenetre_liste {
+    margin-top: 10px;
+    margin: 0 auto;
+    width: 70%;
+    border-radius: 10px;
+    background : rgb(8, 179, 185);
   }
