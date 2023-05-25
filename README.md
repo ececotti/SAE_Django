@@ -9,7 +9,7 @@ Faire un site web pour une strucutre R&T
 
 ## Voir le site 
 
-Acceuille:
+Accueille:
 http://127.0.0.1:8000/computerApp/
 
 Admin:
