@@ -1,7 +1,7 @@
 # SAE_Django
 Faire un site web pour une strucutre R&T
 
-## Activation/ Démarrage 
+## Activation/ Démarrage 
 
 - Aller dans SAE_DJANGO
 - Faire : source virtualenv/djangoenv/bin/activate
