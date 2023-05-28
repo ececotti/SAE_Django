@@ -62,4 +62,10 @@ def personnel_add_form(request):
         form = AddPersonnelForm ( )
         context = {'form': form}
         return render(request, 'computerApp/personnel_add.html',context)
-    
+
+def index(request):
+    machines = Machine.objects.all()
+    personnels = Personnel.objects.all()
+    context = {'machines': machines, 'personnels': personnels}
+    return render(request, 'index.html', context)
+

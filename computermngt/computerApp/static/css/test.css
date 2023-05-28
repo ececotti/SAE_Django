@@ -54,14 +54,41 @@ body {
     width: 100%;
   }
 
-  .titre_fenetre{
-    text-align: center;
-  }
+  .titre_fenetre {
+        margin: 0 auto;
+    background-color: rgb(8, 179, 185); /* Couleur de fond du titre */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+    color: white; /* Couleur du texte du titre */
+    width: 70%;
+}
   
   .fenetre_liste {
     margin-top: 10px;
     margin: 0 auto;
     width: 70%;
-    border-radius: 10px;
-    background : rgb(8, 179, 185);
-  }
+    background-color: rgb(135, 206, 235); /* Couleur de fond des éléments */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px; /* Espacement interne */
+}
+
+  .image-machine {
+    width: 100px; /* Définir la largeur souhaitée */
+    height: auto; /* Ajuster la hauteur en fonction de la largeur */
+    background-color: rgb(8, 179, 185); /* Couleur de fond bleue */
+}
+
+.image-personnel {
+    width: 100px; /* Définir la largeur souhaitée */
+    height: auto; /* Ajuster la hauteur en fonction de la largeur */
+    background-color: rgb(8, 179, 185); /* Couleur de fond bleue */
+}
+
+.item {
+  width: 40%; /* Ajuster la largeur en fonction du nombre d'éléments par ligne */
+  display: inline-block;
+  margin-bottom: 20px; /* Ajouter une marge inférieure pour séparer les lignes */
+  background-color: rgb(8, 179, 185); /* Couleur de fond bleue */
+  border-radius: 20px; /* Coins arrondis */
+  padding: 20px; /* Ajouter un espacement interne */
+}

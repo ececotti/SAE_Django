@@ -20,7 +20,7 @@
         <div class="topnav">
             <div class="link">
                 <a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Connexion</a>
-                <a href="{% url 'index' %}">Accueille</a>
+                <a href="{% url 'index' %}">Accueil</a>
                 <a href="{% url 'machines' %}">Machines</a>
                 <a href="{% url 'personnels' %}">Personnels</a>
             </div>    
@@ -28,10 +28,6 @@
                 <img src="{% static 'computerApp/image/logo.png' %} ">
             </div>
         </div>
-        
-        <h1>R&T Dev</h1> 
-
-        <h2>Menu</h2>
 
         <div style="text-align: center">
             <h2>Bienvenue sur le site R&T</h2>
@@ -41,11 +37,30 @@
     {% endblock %} 
 
     {% block content %} 
-    <div class="fenetre_liste">
-        <div class="titre_fenetre">
-            <h2>Liste des machines et personnels assiciés</h2>
-        </div>
+
+    <div class="titre_fenetre">
+        <h2>Liste des machines et personnels associés</h2>
     </div>
+       
+        <div class="fenetre_liste">
+            <ul>
+                {% for machine in machines %}
+                <li class="item">
+                    <img src="{% static 'computerApp/image/ordinateur.png' %} " class="image-machine">
+                    <a href="{% url 'machine-detail' machine.id %}">
+                        {{ machine.id }} ({{ machine.name }})
+                    </a>
+                </li>
+                {% endfor %}
+                {% for personnel in personnels %}
+                <li class="item">
+                    <img src="{% static 'computerApp/image/personnel.png' %} "  class="image-personnel">
+                    <a href="{% url 'personnel-detail' personnel.id %}">{{ personnel.id }}</a> ({{personnel.nom}})
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    
     
 
 
