@@ -2,7 +2,11 @@
 {% block content %}
 <form method= "post">
 {% csrf_token %}
-{{ form.nom }}
+<p>Type de machine : {{ form.machine_type }} </p>
+<p>Id de la machine : {{ form.id }} </p>
+<p>Nom de la machine : {{ form.name }} </p>
+<p>Réseau d'appartenance : {{ form.reseau }} </p>
+<p>Adresse IP : {{ form.ip }} </p>
 <input type="submit" value="Submit">
 </form>
 {% endblock %}

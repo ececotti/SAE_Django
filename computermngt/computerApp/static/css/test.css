@@ -55,7 +55,7 @@ body {
   }
 
   .titre_fenetre {
-        margin: 0 auto;
+    margin: 0 auto;
     background-color: rgb(8, 179, 185); /* Couleur de fond du titre */
     border-radius: 10px; /* Coins arrondis */
     padding: 20px; /* Espacement interne */
@@ -70,10 +70,13 @@ body {
     background-color: rgb(135, 206, 235); /* Couleur de fond des éléments */
     border-radius: 10px; /* Coins arrondis */
     padding: 20px; /* Espacement interne */
+    display: flex; /* Utiliser flexbox */
+    flex-wrap: wrap; /* Permettre le retour à la ligne des éléments */
+    justify-content: space-between; /* Espacement équilibré des éléments */
 }
 
-  .image-machine {
-    width: 100px; /* Définir la largeur souhaitée */
+.image-machine {
+    width: 200px; /* Définir la largeur souhaitée */
     height: auto; /* Ajuster la hauteur en fonction de la largeur */
     background-color: rgb(8, 179, 185); /* Couleur de fond bleue */
 }
@@ -85,10 +88,16 @@ body {
 }
 
 .item {
-  width: 40%; /* Ajuster la largeur en fonction du nombre d'éléments par ligne */
+  width: 40%;
   display: inline-block;
-  margin-bottom: 20px; /* Ajouter une marge inférieure pour séparer les lignes */
-  background-color: rgb(8, 179, 185); /* Couleur de fond bleue */
-  border-radius: 20px; /* Coins arrondis */
-  padding: 20px; /* Ajouter un espacement interne */
+  margin-bottom: 20px;
+  background-color: rgb(8, 179, 185);
+  border-radius: 20px;
+  padding: 20px;
+  height: 220px; /* Hauteur prédéfinie pour les rectangles */
+  vertical-align: top; /* Alignement vertical en haut */
 }
+
+
+
+

@@ -1,19 +1,54 @@
-
 {% extends "index.html" %}
 
 {% block content %}
-    <h1>liste des machines</h1>
-        {% if machines %}
-        <ul>
-            <a href="{% url 'add-machine' %}">Ajouter une machine</a>
-            {% for machine in machines %}
-                <li>
-                    <a href="{% url 'machine-detail' machine.id %}">
-                    {{ machine.id }} </a> ({{machine.name}})
-                </li>
-            {% endfor %}
-        </ul>   
-        {% else %}
-            <p> Il n\'y a pas de machine.<p>
-        {% endif %}
+    <h1>Liste des machines</h1>
+    {% if machines %}
+        <a href="{% url 'add-machine' %}">Ajouter une machine</a>
+        <style>
+            table {
+                width: 600px; /* Largeur fixe du tableau */
+                margin: 0 auto; /* Centrer le tableau horizontalement */
+                background-color: rgb(200, 230, 255); /* Fond bleu assez clair */
+                border-collapse: collapse; /* Fusionner les bordures de cellules */
+            }
+            
+            th, td {
+                padding: 10px; /* Ajouter un espacement interne aux cellules */
+                border-right: 1px solid rgb(8, 129, 145);
+                border-bottom: 1px solid rgb(8, 129, 145); /* Ligne de séparation bleu foncé */
+            }
+            
+            th {
+                text-align: left;
+                background-color: rgb(8, 179, 185); /* Fond bleu foncé pour les en-têtes des colonnes */
+                color: white; /* Texte en blanc pour les en-têtes des colonnes */
+            }
+        </style>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type de machine</th>
+                    <th>Nom</th>
+                    <th>Reseau</th>
+                    <th>adresse IP</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for machine in machines %}
+                    <tr>
+                        <td>{{ machine.id }}</td>
+                        <td>{{ machine.type_machine }}</td>
+                        <td>{{ machine.name }}</td>
+                        <td>{{ machine.reseau }}</td>
+                        <td>{{ machine.ip }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a pas de machine.</p>
+        <a href="{% url 'add-machine' %}">Ajouter une machine</a>
+    {% endif %}
 {% endblock %}

@@ -41,13 +41,18 @@ def machine_add_form(request):
     if request.method == 'POST':
         form = AddMachineForm(request.POST or None)
         if form.is_valid():
-            new_machine = Machine(nom=form.cleaned_data['nom'])
+            new_machine = Machine(name=form.cleaned_data['name'],
+                                reseau=form.cleaned_data['reseau'],
+                                id=form.cleaned_data['id'],
+                                ip=form.cleaned_data['ip'],
+                                type_machine=form.cleaned_data['machine_type']) 
             new_machine.save()
             return redirect('machines')
-    else :
-        form = AddMachineForm ( )
-        context = {'form': form}
-        return render(request, 'computerApp/machine_add.html',context)
+    else:
+        form = AddMachineForm()
+    context = {'form': form}
+    return render(request, 'computerApp/machine_add.html', context)
+
     
 def personnel_add_form(request):
     if request.method == 'POST':

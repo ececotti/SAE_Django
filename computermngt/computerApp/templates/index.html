@@ -47,15 +47,14 @@
                 {% for machine in machines %}
                 <li class="item">
                     <img src="{% static 'computerApp/image/ordinateur.png' %} " class="image-machine">
-                    <a href="{% url 'machine-detail' machine.id %}">
-                        {{ machine.id }} ({{ machine.name }})
-                    </a>
+                    <p>Device : {{ machine.type_machine }}</p> <p> Id :{{ machine.id }}</><a> Nom: {{ machine.name }} </a>
+                    </p>
                 </li>
                 {% endfor %}
                 {% for personnel in personnels %}
                 <li class="item">
                     <img src="{% static 'computerApp/image/personnel.png' %} "  class="image-personnel">
-                    <a href="{% url 'personnel-detail' personnel.id %}">{{ personnel.id }}</a> ({{personnel.nom}})
+                    <p>Id : {{ personnel.id }}</p><a> Nom : {{personnel.nom}} </a>
                 </li>
                 {% endfor %}
             </ul>

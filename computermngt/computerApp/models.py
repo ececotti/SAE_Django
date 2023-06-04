@@ -10,20 +10,32 @@ class Machine(models.Model):
         editable=False)
     
     def __str__(self):
-        return str(self.id) + " --> " + self.name
+        return str(self.id) + " --> " + self.name + ", " + self.reseau
     
     def get_name(self):
-        return str(self.id) + " " + self.name
+        return str(self.id) + " " + self.name + ", " + self.reseau
     
     TYPE = (
         ('PC', ('PC - Run windows')),
         ('Mac', ('MAc - Run MacOS')),
         ('Serveur', ('Serveur - Simple Server to deploy virtual machines')),
         ('Switch', ('Switch − To maintains and connect servers' )),
+        ('Rooter', ('Rooter - To maintains and connect LANs')),
     )
+    
+    reseau = (
+        ('Filiale', ('Filiale - 192.168.0.0')),
+        ('QG', ('QG - 10.10.10.0')),
+        ('Serveurs', ('Serveurs - 172.22.16.0')),
+        ('WifiOuvert', ('WifiOuvert − 122.0.0.0' )),
+        ('BackUp', ('BackUp - 156.123.0.0')),
+    )
+    
+    type_machine = models.CharField(max_length=200, default ='')
+    reseau = models.CharField(max_length=200, default ='')
     name = models.CharField(max_length=6, default ='')
+    ip = models.GenericIPAddressField(null=True)
     maintenanceDate = models.DateField(default = datetime.now())
-    mach = models.CharField(max_length=32, choices=TYPE, default='PC')
     
 class Personnel(models.Model):
     
