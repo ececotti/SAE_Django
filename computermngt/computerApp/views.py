@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from computerApp.models import Machine, Personnel
 from .forms import AddMachineForm, AddPersonnelForm
 
+
 def index(request) :
     #ajout de la ligne de récupération des machines
     #machines = Machine.objects.all()
@@ -60,7 +61,8 @@ def personnel_add_form(request):
         if form.is_valid():
             new_personnel = Personnel(nom=form.cleaned_data['nom'],
                                       prenom=form.cleaned_data['prenom'],
-                                      id=form.cleaned_data['id'])
+                                      id=form.cleaned_data['id'],
+                                      machine=form.cleaned_data['machine'])
             new_personnel.save()
             return redirect('personnels')
     else :
@@ -74,3 +76,45 @@ def index(request):
     context = {'machines': machines, 'personnels': personnels}
     return render(request, 'index.html', context)
 
+def home(request):
+    from .forms import SearchForm
+    form = SearchForm(request.GET)  # Récupère les données du formulaire GET
+    machines = Machine.objects.all()  # Récupère toutes les machines
+    personnels = Personnel.objects.all()  # Récupère tous les personnels
+    
+    if form.is_valid():
+        personnel_name = form.cleaned_data['personnel_name']
+        # Effectuer la recherche en utilisant le nom du personnel
+        
+        # Filtrer les résultats en fonction du nom du personnel
+        
+    context = {
+        'form': form,
+        'machines': machines,
+        'personnels': personnels,
+    }
+    
+    return render(request, 'index.html', context)
+    
+def global_context(request):
+    from .forms import SearchForm
+    form = SearchForm()  # Crée une instance du formulaire de recherche
+    return {'search_form': form}  # Retourne le formulaire dans le contexte sous la clé 'search_form'
+    
+
+def search_results(request):
+    from .forms import SearchForm
+    form = SearchForm(request.GET) # Crée une instance du formulaire de recherche avec les données GET
+    if form.is_valid(): # Récupère les données 
+        personnel_name = form.cleaned_data['personnel_name']
+        machine_name = form.cleaned_data['machine_name']
+        machine_ip = form.cleaned_data['machine_ip']
+        
+        # Effectue la recherche en utilisant les données fournies
+        
+        # Passer les résultats de recherche au contexte
+      
+    context = {
+            'form': form,
+        }
+    return render(request, 'index.html.html', context)

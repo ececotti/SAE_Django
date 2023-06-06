@@ -41,24 +41,63 @@
     <div class="titre_fenetre">
         <h2>Liste des machines et personnels associés</h2>
     </div>
-       
-        <div class="fenetre_liste">
-            <ul>
-                {% for machine in machines %}
+
+   
+<!-- Bloc de recherche pour le nom du personnel -->
+<form method="GET" action="{% url 'index' %}">
+    <input type="text" name="personnel_name" placeholder="Nom du personnel">
+    <button type="submit">Rechercher</button>
+</form>
+
+<!-- Bloc de recherche pour le nom de la machine -->
+<form method="GET" action="{% url 'index' %}">
+    <input type="text" name="machine_name" placeholder="Nom de la machine">
+    <button type="submit">Rechercher</button>
+</form>
+
+<!-- Bloc de recherche pour l'adresse IP de la machine -->
+<form method="GET" action="{% url 'index' %}">
+    <input type="text" name="machine_ip" placeholder="Adresse IP de la machine">
+    <button type="submit">Rechercher</button>
+</form>
+
+<!-- Afficher les résultats de recherche -->
+{% if search_results_personnel %}
+    <h2>Résultats de recherche (Personnels)</h2>
+    <ul>
+        {% for personnel in search_results_personnel %}
+            <li>{{ personnel.nom }}</li>
+        {% endfor %}
+    </ul>
+{% elif search_results_machine %}
+    <h2>Résultats de recherche (Machines)</h2>
+    <ul>
+        {% for machine in search_results_machine %}
+            <li>{{ machine.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>Liste complète de machines et personnels</h2>
+    <div class="fenetre_liste">
+        <ul>
+            {% for machine in machines %}
                 <li class="item">
                     <img src="{% static 'computerApp/image/ordinateur.png' %} " class="image-machine">
-                    <p>Device : {{ machine.type_machine }}</p> <p> Id :{{ machine.id }}</><a> Nom: {{ machine.name }} </a>
-                    </p>
+                    <p>Device: {{ machine.type_machine }}</p>
+                    <p>Id: {{ machine.id }}</p>
+                    <a>Nom: {{ machine.name }}</a>
                 </li>
-                {% endfor %}
-                {% for personnel in personnels %}
+            {% endfor %}
+            {% for personnel in personnels %}
                 <li class="item">
-                    <img src="{% static 'computerApp/image/personnel.png' %} "  class="image-personnel">
-                    <p>Id : {{ personnel.id }}</p><a> Nom : {{personnel.nom}} </a>
+                    <img src="{% static 'computerApp/image/personnel.png' %} " class="image-personnel">
+                    <p>Id: {{ personnel.id }}</p>
+                    <a>Nom: {{ personnel.nom }}</a>
                 </li>
-                {% endfor %}
-            </ul>
-        </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
     
     
 

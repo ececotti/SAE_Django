@@ -2,6 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.shortcuts import render
+from .models import Machine, Personnel
 import ipaddress
 
 
@@ -66,6 +68,7 @@ class AddPersonnelForm (forms.Form):
     nom = forms.CharField (required=True, label = 'Nom de la personnel')
     prenom = forms.CharField (required=True, label = 'Prenom de la personnel')
     id = forms.IntegerField (required=True, label='ID svp de la personne')
+    machine = machine = forms.ModelChoiceField(queryset=Machine.objects.all(), required=False)
     
     def clean_nom(self):
         data = self.cleaned_data["nom"]
@@ -84,3 +87,9 @@ class AddPersonnelForm (forms.Form):
         if len(data) > 60:
             raise ValidationError (("Erreur de format pour le champ prenom"))
         return data
+    
+class SearchForm (forms.Form):
+    personnel_name = forms.CharField(label='Nom du personnel', required=False)
+    machine_name = forms.CharField(label='Nom de la machine', required=False)
+    machine_ip = forms.GenericIPAddressField(label='Adresse IP de la machine', required=False)
+

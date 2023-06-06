@@ -42,9 +42,10 @@ class Personnel(models.Model):
     id = models.PositiveIntegerField(primary_key=True,editable=True, validators=[MaxValueValidator(9999999999999)])
     nom= models.CharField(max_length= 200)
     prenom= models.CharField(max_length= 200)
-    
+    machine = models.ForeignKey(Machine, on_delete=models.SET_NULL, null=True)
+        
     #donne ce qui est affiché sur le site
     def __str__(self):
-        return str(self.id) + " --> " + self.nom + ", " + self.prenom
+        return str(self.id) + " --> " + self.nom + ", " + self.prenom + ", " + self.machine
  
 
