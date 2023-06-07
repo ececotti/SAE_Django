@@ -2,10 +2,10 @@
 {% block content %}
 <form method= "post">
 {% csrf_token %}
-<p>Nom de la personne : {{ form.nom }}</p>
-<p>Prenom de la personne : {{ form.prenom }}</p>
-<p>Id de la personne : {{ form.id }}</p>
-<p>Machine utilisée: {{ form.machine }}</p>
-<input type="submit" value="Submit">
+    <p>Nom de la personne : {{ form.nom }}</p>
+    <p>Prenom de la personne : {{ form.prenom }}</p>
+    <p>Id de la personne : {{ form.id }}</p>
+    <p>Machine utilisée: {{ form.machine }}</p>
+    <input type="submit" value="Submit">
 </form>
 {% endblock %}

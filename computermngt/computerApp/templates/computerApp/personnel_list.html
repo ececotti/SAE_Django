@@ -1,17 +1,105 @@
 {% extends "index.html" %}
 
+{% block head %}
+    <style>
+        /* Styles pour la table */
+        table {
+            width: 600px; /* Largeur fixe du tableau */
+            margin: 0 auto; /* Centrer le tableau horizontalement */
+            background-color: rgb(200, 230, 255); /* Fond bleu assez clair */
+            border-collapse: collapse; /* Fusionner les bordures de cellules */
+        }
+        
+        th, td {
+            padding: 10px; /* Ajouter un espacement interne aux cellules */
+            border-right: 1px solid rgb(8, 129, 145);
+            border-bottom: 1px solid rgb(8, 129, 145); /* Ligne de séparation bleu foncé */
+        }
+        
+        th {
+            text-align: left;
+            background-color: rgb(8, 179, 185); /* Fond bleu foncé pour les en-têtes des colonnes */
+            color: white; /* Texte en blanc pour les en-têtes des colonnes */
+        }
+        
+        /* Styles pour le bouton d'ajout */
+        button {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #87CEEB;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+          
+        button:hover {
+            background-color: #6495ED;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
+
+<style>
+    /* Styles pour la table */
+    table {
+        width: 600px; /* Largeur fixe du tableau */
+        margin: 0 auto; /* Centrer le tableau horizontalement */
+        background-color: rgb(200, 230, 255); /* Fond bleu assez clair */
+        border-collapse: collapse; /* Fusionner les bordures de cellules */
+    }
+    
+    th, td {
+        padding: 10px; /* Ajouter un espacement interne aux cellules */
+        border-right: 1px solid rgb(8, 129, 145);
+        border-bottom: 1px solid rgb(8, 129, 145); /* Ligne de séparation bleu foncé */
+    }
+    
+    th {
+        text-align: left;
+        background-color: rgb(8, 179, 185); /* Fond bleu foncé pour les en-têtes des colonnes */
+        color: white; /* Texte en blanc pour les en-têtes des colonnes */
+    }
+</style>
+
     <h1>liste du personnel</h1>
-        {% if personnels %}
-        <ul>
+    {% if personnels %}
+    <ul>
+        <!-- Bouton d'ajout -->
+        <button class="button-add">
             <a href="{% url 'add-personnel' %}">Ajouter un personnel</a>
-            {% for personnel in personnels %}
-                <li>
-                    <a href="{% url 'personnel-detail' personnel.id %}">{{ personnel.id }}</a> ({{personnel.nom}})
-                </li>
-            {% endfor %}
-        </ul>   
-        {% else %}
-            <p> Il n\'y a personne.<p>
-        {% endif %}
+        </button>
+
+        <!-- Tableau de données -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Machine</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for personnel in personnels %}
+                    <tr>
+                        <td>{{ personnel.id }}</td>
+                        <td>{{ personnel.nom }}</td>
+                        <td>{{ personnel.prenom }}</td>
+                        <td>{{ personnel.machine }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </ul>
+    {% else %}
+        <p>Il n'y a personne.</p>
+    {% endif %}
 {% endblock %}

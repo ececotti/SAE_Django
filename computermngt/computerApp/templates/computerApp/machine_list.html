@@ -1,9 +1,60 @@
 {% extends "index.html" %}
 
+{% block head %}
+    <style>
+        /* Styles pour la table */
+        table {
+            width: 600px; /* Largeur fixe du tableau */
+            margin: 0 auto; /* Centrer le tableau horizontalement */
+            background-color: rgb(200, 230, 255); /* Fond bleu assez clair */
+            border-collapse: collapse; /* Fusionner les bordures de cellules */
+        }
+        
+        th, td {
+            padding: 10px; /* Ajouter un espacement interne aux cellules */
+            border-right: 1px solid rgb(8, 129, 145);
+            border-bottom: 1px solid rgb(8, 129, 145); /* Ligne de séparation bleu foncé */
+        }
+        
+        th {
+            text-align: left;
+            background-color: rgb(8, 179, 185); /* Fond bleu foncé pour les en-têtes des colonnes */
+            color: white; /* Texte en blanc pour les en-têtes des colonnes */
+        }
+        
+        /* Styles pour le bouton d'ajout */
+        button {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #87CEEB;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+          
+        button:hover {
+            background-color: #6495ED;
+        }
+
+        h1 {
+            text-align: center; 
+        }
+        
+    </style>
+{% endblock %}
+
 {% block content %}
     <h1>Liste des machines</h1>
     {% if machines %}
+    <button class="button-add">
         <a href="{% url 'add-machine' %}">Ajouter une machine</a>
+    </button>
         <style>
             table {
                 width: 600px; /* Largeur fixe du tableau */
@@ -49,6 +100,5 @@
         </table>
     {% else %}
         <p>Il n'y a pas de machine.</p>
-        <a href="{% url 'add-machine' %}">Ajouter une machine</a>
     {% endif %}
 {% endblock %}
